@@ -1,8 +1,8 @@
-package com.company;
+package lesson1.Iterations;
 
 import java.util.Stack;
 
-public class Main {
+public class BinaryGap {
 
     public static void main(String[] args) {
         Solution s = new Solution();
