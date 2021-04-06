@@ -13,9 +13,6 @@ public class FrogJmp {
 class Solution1 {
     public int solution(int X, int Y, int D) {
         int initDistance = Y - X;
-        System.out.println(initDistance % D);
-        System.out.println(initDistance / D);
-        System.out.println((initDistance / D) + 1);
         return initDistance % D == 0 ? initDistance / D : initDistance / D + 1;
     }
 }

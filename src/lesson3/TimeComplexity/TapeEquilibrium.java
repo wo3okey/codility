@@ -1,5 +1,8 @@
 package lesson3.TimeComplexity;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TapeEquilibrium {
     public static void main(String[] args) {
         Solution3 s = new Solution3();
@@ -10,27 +13,24 @@ public class TapeEquilibrium {
 
 class Solution3 {
     public int solution(int[] A) {
-        int[] P = new int[A.length - 1];
-        for (int i = 0; i < A.length - 1; i++) {
-            P[i] = (i + 1);
+        long sum = 0;
+        Map<Integer, Long> sumMap = new HashMap<>();
+        for (int i = 0; i < A.length; i++) {
+            sum += A[i];
+            sumMap.put(i, sum);
         }
 
-        int min = Integer.MAX_VALUE;
-        for (int i = 0; i < P.length; i++) {
-            int elementP = P[i];
-
-            int frontSum = 0;
-            for (int j = 0; j < elementP; j++) {
-                frontSum += A[j];
-            }
-
-            int endSum = 0;
-            for (int j = elementP; j < A.length; j++) {
-                endSum += A[j];
-            }
-
-            min = Math.abs(frontSum - endSum) < min ? Math.abs(frontSum - endSum) : min;
+        long min = Integer.MAX_VALUE;
+        for (int p = 1; p <= A.length - 1; p++) {
+            min = Math.abs(sum - 2 * sumMap.get(p - 1)) < min ? Math.abs(sum - 2 * sumMap.get(p - 1)) : min;
         }
-        return min;
+
+        return (int) min;
     }
+//
+//    p = 1 // (A[0]                     ) - (A[1] + A[2] + A[3] + A[4])
+//    p = 2 // (A[0] + A[1]              ) - (A[2] + A[3] + A[4])
+//    p = 3 // (A[0] + A[1] + A[2]       ) - (A[3] + A[4])
+//    p = 4 // (A[0] + A[1] + A[2] + A[3]) - (A[4])
+//
 }
