@@ -5,7 +5,7 @@ public class CountDiv {
         Solution1 s = new Solution1();
 
         int A = 11;
-        int B = 18;
+        int B = 345;
         int K = 17;
         System.out.print(s.solution(A, B, K));
     }
@@ -14,6 +14,10 @@ public class CountDiv {
 class Solution1 {
     public int solution(int A, int B, int K) {
         int result = 0;
+
+        if (A <= K && K <= B) {
+            result = 1;
+        }
 
         if (A % K == 0) {
             result++;
@@ -24,6 +28,7 @@ class Solution1 {
         }
 
         int diff = B - A;
+
         result += (diff / K);
         return result;
     }
