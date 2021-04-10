@@ -1,21 +1,21 @@
-package StacksAndQueues;
+package lesson7.StacksAndQueues;
 
 import java.util.Stack;
 
-public class Nesting {
+public class Brackets {
     public static void main(String[] args) {
-        Solution3 s = new Solution3();
-//        String S = "(()(())())";
-        String S = "())";
+        Solution1 s = new Solution1();
+        String S = "{[()()]}";
+//        String S = "{{{{";
         System.out.println(s.solution(S));
     }
 }
 
-class Solution3 {
+class Solution1 {
     public int solution(String S) {
         Stack<Character> stack = new Stack<>();
         for (char c : S.toCharArray()) {
-            if (c == '(') {
+            if (c == '(' || c == '{' || c == '[') {
                 stack.push(c);
                 continue;
             }
@@ -26,7 +26,7 @@ class Solution3 {
 
             char open = stack.pop();
             char close = c;
-            if ((open == '(' && close != ')')) {
+            if ((open == '(' && close != ')') || (open == '{' && close != '}') || (open == '[' && close != ']')) {
                 return 0;
             }
         }

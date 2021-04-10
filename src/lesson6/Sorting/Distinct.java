@@ -1,4 +1,4 @@
-package lesson6;
+package lesson6.Sorting;
 
 import java.util.HashSet;
 import java.util.Set;

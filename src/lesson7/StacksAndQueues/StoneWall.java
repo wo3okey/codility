@@ -1,4 +1,4 @@
-package StacksAndQueues;
+package lesson7.StacksAndQueues;
 
 import java.util.Stack;
 
